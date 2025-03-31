@@ -1,0 +1,16 @@
+@use '@/styles/variables' as *;
+
+.CardHeader {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  margin: 0 -1% 2% -3.3%;
+
+  &-title {
+    color: $gray-800;
+    font-weight: 600;
+    font-size: 2em;
+    flex: 1;
+    line-height: 1;
+  }
+}

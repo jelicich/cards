@@ -1,0 +1,41 @@
+.Card {
+  aspect-ratio: 63 / 88;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: calc(8.8% / 2) / calc(6.3% / 2);
+  overflow: hidden;
+  font-size: 100%;
+  position: relative;
+  background: rgb(255,255,255);
+  background: linear-gradient(141deg, rgba(255,255,255,1) 0%, rgba(207,207,207,1) 33%, rgba(255,255,255,1) 66%, rgba(207,207,207,1) 100%);
+  padding: 3%;
+  display: flex;
+
+  &-outterBackground {
+    // background: rgb(255,255,255);
+    // background: linear-gradient(141deg, rgba(255,255,255,1) 0%, rgba(207,207,207,1) 33%, rgba(255,255,255,1) 66%, rgba(207,207,207,1) 100%);
+    // padding: 3%;
+    // width: 100%;
+    // height: 100%;
+    // max-width: 100%;
+    // max-height: 100%;
+  }
+
+  &-innerBackground {
+    position: absolute;
+    // TODO: make color dynamic based on energy
+    background: rgb(208,175,10);
+    background: linear-gradient(141deg, rgba(208,175,10,1) 0%, rgba(251,209,0,1) 33%, rgba(208,175,10,1) 66%, rgba(255,226,0,1) 100%);
+    border-radius: calc(8.8% / 4) / calc(6.3% / 4);
+    width: calc(100% - 6%);
+    overflow: hidden;
+    aspect-ratio: 62 / 88;
+    box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  &-content {
+    position: relative;
+    z-index: 1;
+    padding: 1% 2.5% 2.5% 2.5%;
+  }
+}

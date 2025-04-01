@@ -18,11 +18,11 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
   <span
     class="EnergyIcon"
-    :style="`width: ${size}; height: ${size}`"
+    :style="`width: ${size};`"
   >
     <img
       class="EnergyIcon-image"
-      :src="getImageUrl(`energy/${type.toLowerCase()}.svg`)"
+      :src="getImageUrl(`energy/${type.toLowerCase()}.png`)"
     />
   </span>
 </template>

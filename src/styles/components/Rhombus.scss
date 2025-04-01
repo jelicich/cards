@@ -1,0 +1,9 @@
+@use '@/styles/variables' as *;
+
+.Rhombus {
+  display: flex;
+
+  &-outter {
+    fill: $gray-800;
+  }
+}

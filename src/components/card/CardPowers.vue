@@ -21,6 +21,7 @@ defineProps<{
               v-for="energy, i in power.energies"
               :key="i"
               :type="energy"
+              size="25%"
             />
           </div>
           <h3 class="CardPowers-name">

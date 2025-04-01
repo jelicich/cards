@@ -35,4 +35,16 @@
   &--italic {
     font-style: oblique;
   }
+
+  &--full {
+    display: flex;
+    width: 100%;
+
+    .Pill {
+      &-inner {
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
 }

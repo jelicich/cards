@@ -1,0 +1,37 @@
+@use '@/styles/variables' as *;
+
+.CardPowers {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  &-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &-itemRow {
+    align-items: center;
+    display: flex;
+    gap: 3%;
+  }
+
+  &-name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 1.5em;
+    color: $gray-800;
+  }
+
+  &-energyWrapper {
+    display: flex;
+    width: 25%;
+  }
+
+  &-points {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: $gray-800;
+  }
+}

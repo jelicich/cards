@@ -9,7 +9,7 @@ import CardFooter from "@/components/card/CardFooter.vue";
 import Power from "@/models/Power";
 import Energy from "@/models/Energy";
 
-defineProps<{
+const props = defineProps<{
   evolution: string;
   name: string;
   hitPoints: number;
@@ -21,11 +21,17 @@ defineProps<{
   abilityTitle?: string;
   abilityDescription?: string;
   powers: Array<Power>;
+  weakness: { energy: Energy, amount: number};
+  retreat: Array<Energy>;
+  artist: string;
+  info: string;
 }>()
+
+const cardClass = props.energy.toLowerCase();
 </script>
 
 <template>
-  <Card>
+  <Card :class="`Card--${cardClass}`">
     <CardHeader
       :evolution="evolution"
       :name="name"
@@ -49,7 +55,12 @@ defineProps<{
     <CardPowers
       :powers="powers"
     />
-    <CardFooter />
+    <CardFooter
+      :weakness="weakness"
+      :retreat="retreat"
+      :artist="artist"
+      :info="info"
+    />
   </Card>
 </template>
 

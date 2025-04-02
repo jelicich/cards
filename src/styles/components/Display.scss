@@ -1,0 +1,14 @@
+.Display {
+  perspective: 800px;
+  transform-style: preserve-3d;
+  display: flex;
+
+  &-target {
+    margin: auto;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx)) rotateY(var(--ry)) scale(1);
+
+    will-change: transform;
+  }
+}

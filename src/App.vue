@@ -9,7 +9,8 @@ const pikachu = {
   name: 'Pikachu',
   hitPoints: 120,
   energy: Energy.LIGHTNING,
-  backgroundPicture: 'pikachu.webp',
+  backgroundPicture: 'pikachu-bg.jpg',
+  foregroundPicture: 'pikachu-fg.png',
   powers: [{
     energies: [Energy.LIGHTNING],
     name: 'Gnaw',
@@ -46,6 +47,12 @@ const yiki = {
 </script>
 
 <template>
+<!-- <div class="q a">
+  <div class="q b">
+  </div>
+  <div class="q c">
+  </div>
+</div> -->
   <Display>
     <div style="width: 400px; height: 600px">
       <BasicCard v-bind="pikachu" />
@@ -53,5 +60,9 @@ const yiki = {
   </Display>
 </template>
 
-<style scoped>
+<style>
+body {
+  background: rgb(24,24,24);
+  background: linear-gradient(229deg, rgba(24,24,24,1) 0%, rgba(62,62,62,1) 33%, rgba(29,29,29,1) 66%, rgba(75,75,75,1) 100%);
+}
 </style>

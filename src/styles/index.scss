@@ -1,5 +1,16 @@
 @use 'components';
 
+@use 'characters/Charizard';
+
 html, body {
   font-size: 16px;
+}
+
+:root {
+  --x: 0%;
+  --y: 0%;
+  --sx: 0%;
+  --sy: 0%;
+  --rx: 0deg;
+  --ry: 0deg;
 }

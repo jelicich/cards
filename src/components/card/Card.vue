@@ -11,6 +11,10 @@ defineProps<{
     <div class="Card-content">
       <slot></slot>
     </div>
+    <!-- <div class="Card-glare">
+    </div> -->
+    <!-- <div class="Card-foil">
+    </div> -->
   </div>
 </template>
 

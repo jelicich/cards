@@ -5,6 +5,15 @@ import EnergyIcon from "@/components/energy-icon/EnergyIcon.vue";
 defineProps<{
   powers: Array<Power>;
 }>()
+
+const getEnergies = (energies) => {
+  const maxEnergies = 4;
+  const diff = maxEnergies - energies.length;
+  const placeholders = Array.from(Array(diff));
+  const newEnergies = [...energies];
+  newEnergies.push(...placeholders);
+  return newEnergies;
+}
 </script>
 
 <template>
@@ -18,9 +27,10 @@ defineProps<{
         <div class="CardPowers-itemRow">
           <div class="CardPowers-energyWrapper">
             <EnergyIcon
-              v-for="energy, i in power.energies"
+              v-for="energy, i in getEnergies(power.energies)"
               :key="i"
-              :type="energy"
+              :type="energy || 'NEUTRAL'"
+              :class="{'CardPowers-energyPlaceholder': !energy}"
               size="25%"
             />
           </div>

@@ -1,0 +1,28 @@
+@use '@/styles/variables' as *;
+
+.CardAbility {
+  &-heading {
+    display: flex;
+    gap: 3%;
+    align-items: center;
+    margin-bottom: 1.5%;
+  }
+
+  &-pillWrapper {
+    width: 25%;
+  }
+
+  &-title {
+    line-height: 1;
+    font-weight: 600;
+    color: $ability;
+    mix-blend-mode: multiply;
+  }
+
+  &-description {
+    color: $gray-800;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    text-align: justify;
+  }
+}

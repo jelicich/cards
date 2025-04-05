@@ -11,6 +11,12 @@
     padding: 0;
   }
 
+  &-listItem {
+    &:not(:last-child) {
+      margin-bottom: 5%;
+    }
+  }
+
   &-itemRow {
     align-items: center;
     display: flex;
@@ -24,14 +30,25 @@
     color: $gray-800;
   }
 
+  &-description {
+    color: $gray-800;
+    font-size: 0.9em;
+    margin-top: -2%;
+  }
+
   &-energyWrapper {
     display: flex;
     width: 25%;
+    gap: 3%;
   }
 
   &-points {
     font-size: 1.5em;
     font-weight: 600;
     color: $gray-800;
+  }
+
+  &-energyPlaceholder {
+    visibility: hidden;
   }
 }

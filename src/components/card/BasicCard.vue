@@ -8,14 +8,17 @@ import CardPowers from "@/components/card/CardPowers.vue";
 import CardFooter from "@/components/card/CardFooter.vue";
 import Power from "@/models/Power";
 import Energy from "@/models/Energy";
+import CardStyle from "@/models/CardStyle";
 
 const props = defineProps<{
-  evolution: string;
+  evolution: number;
   name: string;
   hitPoints: number;
   energy: Energy,
-  evolutionName?: string;
-  evolutionImage?: string;
+  evolvesFrom?: {
+    name?: string;
+    image?: string;
+  },
   backgroundPicture: string;
   foregroundPicture?: string;
   abilityTitle?: string;
@@ -25,13 +28,15 @@ const props = defineProps<{
   retreat: Array<Energy>;
   artist: string;
   info: string;
+  cardStyle: CardStyle;
 }>()
 
-const cardClass = props.energy.toLowerCase();
+const energyClass = props.energy.toLowerCase();
+const styleClass = props.cardStyle.toLowerCase();
 </script>
 
 <template>
-  <Card :class="`Card--${cardClass}`">
+  <Card :class="`Card--${energyClass} Card--${styleClass}`">
     <CardHeader
       :evolution="evolution"
       :name="name"
@@ -39,9 +44,10 @@ const cardClass = props.energy.toLowerCase();
       :energy="energy"
     />
     <Evolution
-      v-if="evolutionImage && evolutionName"
-      :name="evolutionName"
-      :image="evolutionImage"
+      v-if="evolvesFrom"
+      :name="evolvesFrom.name"
+      :image="evolvesFrom.image"
+      :evolution="evolution"
     />
     <CardPicture
       :background="backgroundPicture"

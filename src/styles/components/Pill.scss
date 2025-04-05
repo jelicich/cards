@@ -7,11 +7,11 @@
   border-radius: 30%;
 
   /* Fixed border cut size */
-  --cut: 5px;
+  --cut: 0.4em;
 
   &-inner {
-    background: rgb(255,255,255);
-    background: linear-gradient(141deg, rgba(207,207,207,1) 0%, rgba(255,255,255,1) 50%, rgba(207,207,207,1) 100%);
+    background: $gray-card;
+    background: $gray-card-gradient;
     padding: 1px 10px;
     display: inline-flex;
     font-size: 0.8em;
@@ -28,7 +28,6 @@
 
   &--uppercase {
     text-transform: uppercase;
-    // -webkit-text-stroke: 0.5px $gray-400;
 	  text-shadow: 0.2px 0.2px 0.5px $gray-500;
   }
 
@@ -44,6 +43,31 @@
       &-inner {
         justify-content: center;
         align-items: center;
+        width: 100%;
+      }
+    }
+  }
+
+  &--ability {
+    .Pill {
+      &-inner {
+        color: $gray-100;
+        position: relative;
+        font-style: italic;
+
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 8%;
+          left: 2%;
+          right: 2%;
+          bottom: 6%;
+          background: $ability;
+          background: $ability-gradient;
+          clip-path: polygon(var(--cut) 0%, calc(100% - var(--cut)) 0%, 100% var(--cut), 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, var(--cut) 100%, 0% calc(100% - var(--cut)), 0% var(--cut));
+          z-index: -1;
+        }
       }
     }
   }

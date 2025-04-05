@@ -10,10 +10,12 @@ defineProps<{
 <template>
   <article class="CardAbility">
     <div class="CardAbility-heading">
-      <Pill>Avility</Pill>
-      <h1>{{ title }}</h1>
+      <div class="CardAbility-pillWrapper">
+        <Pill class="Pill--full Pill--ability">Ability</Pill>
+      </div>
+      <h1 class="CardAbility-title">{{ title }}</h1>
     </div>
-    <p v-html="description" />
+    <p class="CardAbility-description" v-html="description" />
   </article>
 </template>
 

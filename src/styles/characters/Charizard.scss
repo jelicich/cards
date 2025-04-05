@@ -1,0 +1,87 @@
+@use '@/styles/variables' as *;
+
+.Charizard {
+  --cut: 0.4em;
+
+  img {
+    width: 100%;
+  }
+
+  &-0 {
+    --magic-number: 20;
+    transform: translateZ(0em) scale(1);
+    clip-path: polygon(0 11.2%, 100% 11.2%, 100% 46%, 0 46%);
+  }
+
+  &-1 {
+    // display: none;
+    --magic-number: 20;
+    transform: translateZ(1em) scale(0.9);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(47% - var(--y) / var(--magic-number)),
+      0 calc(47% - var(--y) / var(--magic-number))
+    );
+  }
+
+  &-2 {
+    transform: translateZ(1.5em) scale(0.9);
+  }
+
+  &-3 {
+    transform: translateZ(1.5em) scale(0.9);
+  }
+
+  &-4 {
+    // display: none;
+    --magic-number-x: 8;
+    --magic-number-y: 10;
+    transform: translateZ(2em) scale(1);
+    clip-path: polygon(
+      calc(6.3% - var(--x) / var(--magic-number-x)) calc(6.8% - var(--y) / var(--magic-number-y)),
+      calc(93.5% - var(--x) / var(--magic-number-x)) calc(6.8% - var(--y) / var(--magic-number-y)),
+      calc(93.5% - var(--x) / var(--magic-number-x)) calc(94% - var(--y) / var(--magic-number-y)),
+      calc(6.3% - var(--x) / var(--magic-number-x)) calc(94% - var(--y) / var(--magic-number-y)),
+    );
+  }
+
+  &-5 {
+    // display: none;
+    --magic-number-x: 7;
+    --magic-number-y: 9;
+    transform: translateZ(2.5em) scale(1) translateY(1em);
+    clip-path: polygon(
+      calc(7.7% - var(--x) / var(--magic-number-x)) calc(5% - var(--y) / var(--magic-number-y)),
+      calc(92.3% - var(--x) / var(--magic-number-x)) calc(5% - var(--y) / var(--magic-number-y)),
+      calc(92.3% - var(--x) / var(--magic-number-x)) calc(89.7% - var(--y) / var(--magic-number-y)),
+      calc(7.7% - var(--x) / var(--magic-number-x)) calc(89.7% - var(--y) / var(--magic-number-y)),
+    );
+  }
+
+  &-6 {
+    // display: none;
+    --magic-number-x: 8;
+    --magic-number-y: 12;
+    transform: translateZ(2em) scale(1);
+    clip-path: polygon(
+      calc(6.5% - var(--x) / var(--magic-number-x)) calc(6.5% - var(--y) / var(--magic-number-y)),
+      calc(93.5% - var(--x) / var(--magic-number-x)) calc(6.5% - var(--y) / var(--magic-number-y)),
+      calc(93.5% - var(--x) / var(--magic-number-x)) calc(94% - var(--y) / var(--magic-number-y)),
+      calc(6.5% - var(--x) / var(--magic-number-x)) calc(94% - var(--y) / var(--magic-number-y)),
+    );
+  }
+
+  &-7 {
+    // display: none;
+    --magic-number-x: 6;
+    --magic-number-y: 9;
+    transform: translateZ(2.8em) translateY(1em);
+    clip-path: polygon(
+      calc(8.5% - var(--x) / var(--magic-number-x)) calc(6.2% - var(--y) / var(--magic-number-y)),
+      calc(91.5% - var(--x) / var(--magic-number-x)) calc(6.2% - var(--y) / var(--magic-number-y)),
+      calc(91.5% - var(--x) / var(--magic-number-x)) calc(89% - var(--y) / var(--magic-number-y)),
+      calc(8.5% - var(--x) / var(--magic-number-x)) calc(89% - var(--y) / var(--magic-number-y)),
+    );
+  }
+}

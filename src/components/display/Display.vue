@@ -25,15 +25,24 @@ const coordinates = computed(() => {
   // Relative position inside the element
   const rX = x.value - (rect.left + rect.width / 2); // Centered X
   const rY = y.value - (rect.top + rect.height / 2); // Centered Y
-  const pX = rX / rect.width;
-  const pY = rY / rect.height;
+  // Set card rotation limits
+  const rXValue = Math.abs(rX) > 180
+    ? 180 * (rX / Math.abs(rX))
+    : rX
+
+  const rYValue = Math.abs(rY) > 180
+      ? 180 * (rY / Math.abs(rY))
+      : rY
+  console.log(rXValue, rYValue);
+  const pX = rXValue / rect.width;
+  const pY = rYValue / rect.height;
   const spX = Math.min(Math.max(pX, 0), 1);
   const spY = Math.min(Math.max(pY, 0), 1);
   // const aX = x.value / innerWidth * 2;
   // const aY = y.value / innerHeight * 2;
   // Normalize (-1 to 1)
-  const aX = rX / (rect.width / 2);
-  const aY = rY / (rect.height / 2);
+  const aX = rXValue / (rect.width / 2);
+  const aY = rYValue / (rect.height / 2);
 
   return {
     "--x": `${pX * 100}%`,

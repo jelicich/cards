@@ -1,7 +1,11 @@
+declare class TCGdex {
+  constructor(language: string); // or whatever the constructor expects
+  fetch(endpoint: string, param?: string): Promise<unknown>;
+}
 export default class TCGdexService {
   private tcg: TCGdex;
 
-  constructor(language: SupportedLanguages) {
+  constructor(language: string) {
     this.tcg = new TCGdex(language);
   }
 

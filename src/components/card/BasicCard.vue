@@ -6,9 +6,9 @@ import CardPicture from "@/components/card/CardPicture.vue";
 import CardAbility from "@/components/card/CardAbility.vue";
 import CardPowers from "@/components/card/CardPowers.vue";
 import CardFooter from "@/components/card/CardFooter.vue";
-import Power from "@/models/Power";
 import Energy from "@/models/Energy";
 import CardStyle from "@/models/CardStyle";
+import type Power from "@/models/Power";
 
 const props = defineProps<{
   evolution: number;
@@ -45,8 +45,8 @@ const styleClass = props.cardStyle.toLowerCase();
     />
     <Evolution
       v-if="evolvesFrom"
-      :name="evolvesFrom.name"
-      :image="evolvesFrom.image"
+      :name="evolvesFrom.name || ''"
+      :image="evolvesFrom.image || ''"
       :evolution="evolution"
     />
     <CardPicture

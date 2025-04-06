@@ -115,39 +115,39 @@ const moreData = {
   cardStyle: CardStyle.FOIL,
 }
 
-const cards = ref([]);
-const card = ref(null);
-const isLoading = ref(true);
-const error = ref(null);
+// const cards = ref([]);
+// const card = ref(null);
+// const isLoading = ref(true);
+// const error = ref(null);
 
-const tcgService = new TCGdexService('en');
+// const tcgService = new TCGdexService('en');
 
-async function getCardList() {
-  try {
-    const list = await tcgService.getCardList();
-    cards.value = list;
-  } catch (err) {
-    error.value = err;
-    console.error(err);
-  } finally {
-    isLoading.value = false;
-  }
-}
+// async function getCardList() {
+//   try {
+//     const list = await tcgService.getCardList();
+//     cards.value = list;
+//   } catch (err) {
+//     error.value = err;
+//     console.error(err);
+//   } finally {
+//     isLoading.value = false;
+//   }
+// }
 
-async function getCard(event: Event) {
-    try {
-    const id = event.target.value;
-    console.log(id);
-    const result = await tcgService.getCard(id);
-    card.value = result;
-    console.log(card.value);
-  } catch (err) {
-    error.value = err;
-    console.error(err);
-  } finally {
-    isLoading.value = false;
-  }
-}
+// async function getCard(event: Event) {
+//     try {
+//     const id = event.target.value;
+//     console.log(id);
+//     const result = await tcgService.getCard(id);
+//     card.value = result;
+//     console.log(card.value);
+//   } catch (err) {
+//     error.value = err;
+//     console.error(err);
+//   } finally {
+//     isLoading.value = false;
+//   }
+// }
 
 // Run the fetch when component is mounted
 onMounted(async () => {

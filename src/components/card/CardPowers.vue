@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import Power from "@/models/Power";
 import EnergyIcon from "@/components/energy-icon/EnergyIcon.vue";
+import Energy from "@/models/Energy";
+import type Power from "@/models/Power";
 
 defineProps<{
   powers: Array<Power>;
 }>()
 
-const getEnergies = (energies) => {
+const getEnergies = (energies: Array<Energy>) => {
   const maxEnergies = 4;
   const diff = maxEnergies - energies.length;
   const placeholders = Array.from(Array(diff));

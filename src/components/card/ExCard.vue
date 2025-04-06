@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BasicCard from "@/components/card/BasicCard.vue";
-import Power from "@/models/Power";
+import type Power from "@/models/Power";
 import Energy from "@/models/Energy";
 import CardStyle from "@/models/CardStyle";
 
@@ -22,7 +22,7 @@ const props = defineProps<{
   retreat: Array<Energy>;
   artist: string;
   info: string;
-  cardStyle: CardStyle;
+  // cardStyle: CardStyle;
 }>()
 </script>
 

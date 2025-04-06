@@ -1,4 +1,4 @@
-const images = import.meta.glob('@/assets/**/*', { eager: true });
+const images = import.meta.glob('@/assets/**/*', { eager: true }) as Record<string, { default: string }>;
 
 export function useImageUrl() {
   const getImageUrl = (imageName: string) => {

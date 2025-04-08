@@ -1,6 +1,11 @@
 # cards
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a demo inspired in the Pokemon TCG pocket. I believe the design and effects of the cards in this game are really cool so I decided to recreate them in HTML and animate them using CSS. 
+
+In this repo you will find one of the special cards and a builder to build your own basic card.
+
+
+# Repo info
 
 ## Recommended IDE Setup
 

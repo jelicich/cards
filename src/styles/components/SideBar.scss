@@ -1,7 +1,11 @@
+@use '@/styles/variables' as *;
+
 .SideBar {
   max-height: 100vh;
+  min-height: 100vh;
   overflow-y: scroll;
   
+
   &-inner {
     padding: 1rem;
     max-width: 500px;
@@ -9,13 +13,14 @@
     color: #333;
   }
 
-  &-form {
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      color: #2c3e50;
-    }
+  
+  &-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: $gray-100;
   }
+
 
   &-submitButton {
     width: 100%;

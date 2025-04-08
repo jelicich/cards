@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-defineProps<{
+const props =defineProps<{
   title: string;
+  collapsed?: boolean;
 }>();
 
 const isOpen = ref(true);
+isOpen.value = typeof props.collapsed !== 'undefined'
+  ? !props.collapsed 
+  : true;
 
 const toggleSection = () => {
   isOpen.value = !isOpen.value;

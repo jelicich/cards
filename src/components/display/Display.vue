@@ -12,12 +12,14 @@ function updatePointer(event) {
 }
 
 onMounted(() => {
-  area.value.addEventListener("pointermove", updatePointer, true);
-  area.value.firstElementChild.classList.add('Display-target');
+    area.value.addEventListener("pointermove", updatePointer, true);
+    area.value.firstElementChild.classList.add('Display-target');
 });
 
 onUnmounted(() => {
-  area.value.removeEventListener("pointermove", updatePointer);
+  if (area.value) {
+    area.value.removeEventListener("pointermove", updatePointer, true);
+  }
 });
 
 const coordinates = computed(() => {
@@ -61,9 +63,7 @@ const coordinates = computed(() => {
 </script>
 
 <template>
-  <div>
     <div class="Display" :style="coordinates" ref="area">
       <slot></slot>
     </div>
-  </div>
 </template>

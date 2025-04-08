@@ -41,25 +41,25 @@ const onSubmit = () => {
   <div class="SideBar">
     <div class="SideBar-inner">
       <form @submit.prevent="onSubmit" class="SideBar-form">
-        <h2>Create Basic Card</h2>
+        <h2 class="SideBar-title">Create Basic Card</h2>
         
         <CollapsibleSection title="Basic Information">
           <BasicInfoSection v-model="formData" />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Ability">
+        <CollapsibleSection :collapsed="true" title="Ability">
           <AbilitySection v-model="formData" />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Powers">
+        <CollapsibleSection :collapsed="true" title="Powers">
           <PowersSection v-model="formData" />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Combat">
+        <CollapsibleSection :collapsed="true" title="Combat">
           <CombatSection v-model="formData" />
         </CollapsibleSection>
 
-        <CollapsibleSection title="Card Details">
+        <CollapsibleSection :collapsed="true" title="Card Details">
           <MetadataSection v-model="formData" />
         </CollapsibleSection>
 

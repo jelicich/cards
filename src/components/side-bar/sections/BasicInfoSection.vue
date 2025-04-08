@@ -11,6 +11,8 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: CardForm): void;
 }>();
 
+const isMVP = ref(true);
+
 const energyTypes = Object.values(Energy);
 
 const handleFileSelect = (event: Event, type: 'background' | 'foreground') => {
@@ -30,7 +32,7 @@ const handleFileSelect = (event: Event, type: 'background' | 'foreground') => {
 
 <template>
   <div class="SideBar-sectionContent">
-    <div class="SideBar-formGroup">
+    <div v-if="!isMVP"class="SideBar-formGroup">
       <label for="evolution" class="SideBar-label">Evolution</label>
       <input 
         type="number" 
@@ -82,7 +84,7 @@ const handleFileSelect = (event: Event, type: 'background' | 'foreground') => {
       </select>
     </div>
 
-    <fieldset class="SideBar-fieldset">
+    <fieldset v-if="!isMVP" class="SideBar-fieldset">
       <legend class="SideBar-legend">Evolves From (Optional)</legend>
       <div class="SideBar-formGroup">
         <label class="SideBar-label">
@@ -145,3 +147,6 @@ const handleFileSelect = (event: Event, type: 'background' | 'foreground') => {
     </div>
   </div>
 </template>
+<style lang="scss">
+
+</style>

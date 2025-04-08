@@ -14,51 +14,54 @@ const energyTypes = Object.values(Energy);
 </script>
 
 <template>
-  <div class="section-content">
+  <div class="SideBar-sectionContent">
     <!-- Weakness -->
-    <fieldset>
-      <legend>Weakness</legend>
-      <div class="form-group">
-        <label for="weaknessEnergy">Energy Type</label>
+    <fieldset class="SideBar-fieldset">
+      <legend class="SideBar-legend">Weakness</legend>
+      <div class="SideBar-formGroup">
+        <label for="weaknessEnergy" class="SideBar-label">Energy Type</label>
         <select 
           id="weaknessEnergy" 
           v-model="modelValue.weakness.energy"
+          class="SideBar-select"
           @change="emit('update:modelValue', modelValue)"
         >
           <option v-for="type in energyTypes" :key="type" :value="type">{{ type }}</option>
         </select>
       </div>
-      <div class="form-group">
-        <label for="weaknessAmount">Amount</label>
+      <div class="SideBar-formGroup">
+        <label for="weaknessAmount" class="SideBar-label">Amount</label>
         <input 
           type="number" 
           id="weaknessAmount" 
           v-model="modelValue.weakness.amount" 
           min="1" 
           required
+          class="SideBar-input"
           @input="emit('update:modelValue', modelValue)"
         >
       </div>
     </fieldset>
 
     <!-- Retreat Cost -->
-    <fieldset>
-      <legend>Retreat Cost (Neutral Energy)</legend>
-      <div class="energy-counter-list">
-        <div class="energy-counter">
+    <fieldset class="SideBar-fieldset">
+      <legend class="SideBar-legend">Retreat Cost (Neutral Energy)</legend>
+      <div class="SideBar-energyCounterList">
+        <div class="SideBar-energyCounter">
           <span>{{ Energy.NEUTRAL }}</span>
-          <div class="counter-controls">
+          <div class="SideBar-counterControls">
             <button 
               type="button" 
               @click="modelValue.retreat.pop(); emit('update:modelValue', modelValue)"
               :disabled="!modelValue.retreat.length"
-              class="counter-btn"
+              class="SideBar-button SideBar-button--counter"
+              :class="{ 'is-disabled': !modelValue.retreat.length }"
             >-</button>
             <span>{{ modelValue.retreat.length }}</span>
             <button 
               type="button" 
               @click="modelValue.retreat.push(Energy.NEUTRAL); emit('update:modelValue', modelValue)"
-              class="counter-btn"
+              class="SideBar-button SideBar-button--counter"
             >+</button>
           </div>
         </div>
@@ -68,7 +71,7 @@ const energyTypes = Object.values(Energy);
 </template>
 
 <style scoped>
-.energy-counter-list {
+.SideBar-energyCounterList {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -78,13 +81,13 @@ const energyTypes = Object.values(Energy);
   border: 1px solid #ddd;
 }
 
-.energy-counter {
+.SideBar-energyCounter {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.counter-controls {
+.SideBar-counterControls {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -93,14 +96,19 @@ const energyTypes = Object.values(Energy);
   border-radius: 4px;
 }
 
-.counter-btn {
+.SideBar-button {
   padding: 0.25rem 0.5rem;
   font-size: 1em;
   min-width: 2em;
   background-color: #666;
 }
 
-.counter-btn:hover:not(:disabled) {
+.SideBar-button:hover:not(:disabled) {
   background-color: #555;
+}
+
+.SideBar-button.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 </style>

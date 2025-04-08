@@ -57,8 +57,8 @@ const styleClass = computed(() => {
       :evolution="evolution"
     />
     <CardPicture
-      :background="backgroundPicture"
-      :foreground="foregroundPicture"
+      :backgroundPicture="backgroundPicture"
+      :foregroundPicture="foregroundPicture"
     />
     <CardAbility
       v-if="abilityTitle && abilityDescription"

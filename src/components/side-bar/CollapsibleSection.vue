@@ -13,26 +13,26 @@ const toggleSection = () => {
 </script>
 
 <template>
-  <div class="collapsible-section">
-    <button class="section-header" @click="toggleSection">
-      <h3>{{ title }}</h3>
-      <span class="toggle-icon" :class="{ 'is-open': isOpen }">▼</span>
+  <div class="SideBar-section">
+    <button class="SideBar-sectionHeader" @click="toggleSection">
+      <h3 class="SideBar-sectionTitle">{{ title }}</h3>
+      <span class="SideBar-toggleIcon" :class="{ 'is-open': isOpen }">▼</span>
     </button>
-    <div class="section-body" :class="{ 'is-open': isOpen }">
+    <div class="SideBar-sectionBody" :class="{ 'is-open': isOpen }">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <style scoped>
-.collapsible-section {
+.SideBar-section {
   border: 1px solid #ddd;
   border-radius: 4px;
   margin-bottom: 1rem;
   background-color: #fff;
 }
 
-.section-header {
+.SideBar-sectionHeader {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -45,38 +45,38 @@ const toggleSection = () => {
   border-bottom: 1px solid #ddd;
 }
 
-.section-header:hover {
+.SideBar-sectionHeader:hover {
   background-color: #e9ecef;
 }
 
-.section-header h3 {
+.SideBar-sectionTitle {
   margin: 0;
   font-size: 1.1em;
   color: #333;
 }
 
-.toggle-icon {
+.SideBar-toggleIcon {
   font-size: 0.8em;
   transition: transform 0.2s ease;
   color: #666;
 }
 
-.toggle-icon.is-open {
+.SideBar-toggleIcon.is-open {
   transform: rotate(180deg);
 }
 
-.section-body {
+.SideBar-sectionBody {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
 }
 
-.section-body.is-open {
+.SideBar-sectionBody.is-open {
   max-height: 2000px;
   transition: max-height 0.5s ease-in;
 }
 
-.section-body > :deep(*) {
+.SideBar-sectionBody > :deep(*) {
   padding: 1rem;
 }
 </style>

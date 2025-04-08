@@ -11,21 +11,23 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <div class="section-content">
-    <div class="form-group">
-      <label for="abilityTitle">Title</label>
+  <div class="SideBar-sectionContent">
+    <div class="SideBar-formGroup">
+      <label for="abilityTitle" class="SideBar-label">Title</label>
       <input 
         type="text" 
         id="abilityTitle" 
         v-model="modelValue.abilityTitle"
+        class="SideBar-input"
         @input="emit('update:modelValue', modelValue)"
       >
     </div>
-    <div class="form-group">
-      <label for="abilityDescription">Description</label>
+    <div class="SideBar-formGroup">
+      <label for="abilityDescription" class="SideBar-label">Description</label>
       <textarea 
         id="abilityDescription" 
         v-model="modelValue.abilityDescription"
+        class="SideBar-textarea"
         @input="emit('update:modelValue', modelValue)"
       ></textarea>
     </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted, watchEffect, watch } from "vue";
 
 const hasMouse = ref(true);
 const x = ref(window.innerWidth / 2);
@@ -12,10 +12,13 @@ function updatePointer(event) {
 }
 
 onMounted(() => {
-  area.value.addEventListener("pointermove", updatePointer, true)
+  area.value.addEventListener("pointermove", updatePointer, true);
   area.value.firstElementChild.classList.add('Display-target');
 });
-onUnmounted(() => area.value.removeEventListener("pointermove", updatePointer));
+
+onUnmounted(() => {
+  area.value.removeEventListener("pointermove", updatePointer);
+});
 
 const coordinates = computed(() => {
   if (!area.value) return {};
@@ -26,14 +29,14 @@ const coordinates = computed(() => {
   const rX = x.value - (rect.left + rect.width / 2); // Centered X
   const rY = y.value - (rect.top + rect.height / 2); // Centered Y
   // Set card rotation limits
-  const rXValue = Math.abs(rX) > 180
-    ? 180 * (rX / Math.abs(rX))
+  const rXValue = Math.abs(rX) > 200
+    ? 200 * (rX / Math.abs(rX))
     : rX
 
-  const rYValue = Math.abs(rY) > 180
+  const rYValue = Math.abs(rY) > 160
       ? 180 * (rY / Math.abs(rY))
       : rY
-  console.log(rXValue, rYValue);
+
   const pX = rXValue / rect.width;
   const pY = rYValue / rect.height;
   const spX = Math.min(Math.max(pX, 0), 1);
@@ -58,7 +61,9 @@ const coordinates = computed(() => {
 </script>
 
 <template>
-  <div class="Display" :style="coordinates" ref="area">
-    <slot></slot>
+  <div>
+    <div class="Display" :style="coordinates" ref="area">
+      <slot></slot>
+    </div>
   </div>
 </template>

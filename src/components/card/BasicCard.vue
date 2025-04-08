@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import Card from "@/components/card/Card.vue";
 import CardHeader from "@/components/card/CardHeader.vue";
 import Evolution from "@/components/evolution/Evolution.vue";
@@ -31,8 +32,14 @@ const props = defineProps<{
   cardStyle: CardStyle;
 }>()
 
-const energyClass = props.energy.toLowerCase();
-const styleClass = props.cardStyle.toLowerCase();
+const energyClass = computed(() => {
+  return props.energy.toLowerCase();
+});
+const styleClass = computed(() => {
+  return props.cardStyle.toLowerCase();
+});
+// const energyClass = props.energy.toLowerCase();
+// const styleClass = props.cardStyle.toLowerCase();
 </script>
 
 <template>

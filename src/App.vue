@@ -7,10 +7,26 @@ import Display from "@/components/display/Display.vue";
 import ExCard from "@/components/card/ExCard.vue";
 import { useImageUrl } from '@/composables/useImageUrl';
 import TCGdexService from "@/services/TCGdex.service";
+import SideBar from "@/components/side-bar/SideBar.vue";
+import type { CardForm } from '@/models/CardForm';
 import '@/styles/index.scss';
 
 const { getImageUrl } = useImageUrl();
 
+const card = ref<CardForm | null>(null);
+card.value = {
+  evolution: 0,
+  name: 'Name',
+  hitPoints: 40,
+  energy: Energy.NEUTRAL,
+  backgroundPicture: 'pikachu.webp',
+  powers: [{name: 'Attack', points: 10, energies: [Energy.NEUTRAL]}],
+  weakness: { energy: Energy.FIGHTING, amount: 20 },
+  retreat: [Energy.NEUTRAL],
+  artist: 'Artist name',
+  info: 'Information about this card',
+  cardStyle: CardStyle.BASIC,
+}
 const charizard = {
   evolution: 2,
   name: 'Charizard',
@@ -157,39 +173,48 @@ onMounted(async () => {
 // const charizardBaseAssetsLength = [0, 1, 2, 3, 4];
 // const charizardBlendAssetsLength = [5, 6, 7];
 const charizardAssetsLength = Array.from(Array(8));
+
+function handleCardSubmit(data: CardForm) {
+  console.log(data);
+  card.value = data;
+}
 </script>
 
 <template>
-  <div style="padding-top: 50px">
-    <!-- <select @change="getCard">
-      <option disabled selected>Select a Pokemon</option>
-      <option
-        v-for="pokemon in cards"
-        :key="pokemon.id"
-        :value="pokemon.id"
-      >
-       {{ pokemon.name }}
-      </option>
-    </select> -->
-    <Display>
-      <div style="width: 400px; height: 600px">
+  <div class="AppContent">
+    <SideBar @submit="handleCardSubmit" />
 
-        <ExCard v-bind="charizard" class="Charizard">
-          <img
-            v-for="asset, i in charizardAssetsLength"
-            :key="i"
-            :class="`Charizard-${i}`"
-            :src="getImageUrl(`charizard/${i}.png`)"
-          />
-        </ExCard>
-      </div>
-    </Display>
-    <Display>
-      <div style="width: 400px; height: 600px">
-        <BasicCard v-bind="pikachu" />
-      </div>
-    </Display>
+    <div class="AppStage" style="padding-top: 50px">
+      <!-- <select @change="getCard">
+        <option disabled selected>Select a Pokemon</option>
+        <option
+          v-for="pokemon in cards"
+          :key="pokemon.id"
+          :value="pokemon.id"
+        >
+        {{ pokemon.name }}
+        </option>
+      </select> -->
+      <!-- <Display>
+        <div style="width: 400px; height: 600px">
 
+          <ExCard v-bind="charizard" class="Charizard">
+            <img
+              v-for="asset, i in charizardAssetsLength"
+              :key="i"
+              :class="`Charizard-${i}`"
+              :src="getImageUrl(`charizard/${i}.png`)"
+            />
+          </ExCard>
+        </div>
+      </Display> -->
+      <Display>
+        <div style="width: 400px; height: 600px">
+          <BasicCard v-if="card" v-bind="card" />
+        </div>
+      </Display>
+
+    </div>
   </div>
 </template>
 
@@ -197,5 +222,13 @@ const charizardAssetsLength = Array.from(Array(8));
 body {
   background: rgb(24,24,24);
   background: linear-gradient(229deg, rgba(24,24,24,1) 0%, rgba(62,62,62,1) 33%, rgba(29,29,29,1) 66%, rgba(75,75,75,1) 100%);
+}
+
+.AppContent {
+  display: flex;
+}
+
+.AppStage {
+  flex: 1;
 }
 </style>

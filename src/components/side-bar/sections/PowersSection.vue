@@ -19,7 +19,7 @@ const currentPower = ref<Partial<Power>>({
   name: '',
   points: 0,
   description: '',
-  energies: []
+  energies: [] // Always initialize with empty array
 });
 
 const getEnergyCount = (type: Energy) => {
@@ -34,33 +34,37 @@ const addEnergyToPower = (type: Energy) => {
 };
 
 const removeEnergyFromPower = (type: Energy) => {
-  if (currentPower.value.energies) {
-    const index = currentPower.value.energies.lastIndexOf(type);
-    if (index !== -1) {
-      currentPower.value.energies.splice(index, 1);
-    }
+  if (!currentPower.value.energies) return;
+  const index = currentPower.value.energies.lastIndexOf(type);
+  if (index !== -1) {
+    currentPower.value.energies.splice(index, 1);
   }
 };
 
 const canAddPower = computed(() => {
-  return currentPower.value.name && 
-         currentPower.value.points !== undefined && 
-         currentPower.value.energies?.length > 0 &&
+  const power = currentPower.value;
+  return power.name && 
+         power.points !== undefined && 
+         power.energies && 
+         power.energies.length > 0 &&
          props.modelValue.powers.length < MAX_POWERS;
 });
 
 const addPower = () => {
-  if (currentPower.value.name && currentPower.value.points !== undefined && currentPower.value.energies?.length) {
-    props.modelValue.powers.push({
-      name: currentPower.value.name,
-      points: currentPower.value.points,
-      description: currentPower.value.description || '',
-      energies: [...(currentPower.value.energies || [])]
-    });
-    emit('update:modelValue', props.modelValue);
-    currentPower.value = { name: '', points: 0, description: '', energies: [] };
-  }
+  const power = currentPower.value;
+  if (!power.name || power.points === undefined || !power.energies?.length) return;
+
+  props.modelValue.powers.push({
+    name: power.name,
+    points: power.points,
+    description: power.description || '',
+    energies: [...power.energies]
+  });
+  
+  emit('update:modelValue', props.modelValue);
+  currentPower.value = { name: '', points: 0, description: '', energies: [] };
 };
+
 </script>
 
 <template>
@@ -138,8 +142,6 @@ const addPower = () => {
 </template>
 
 <style lang="scss">
-@import '@/styles/components/SideBar.scss';
-
 .SideBar {
   &-powersList {
     margin-bottom: 1rem;

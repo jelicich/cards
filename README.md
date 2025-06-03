@@ -1,9 +1,10 @@
 # cards
 
-This is a demo inspired in the Pokemon TCG pocket. I believe the design and effects of the cards in this game are really cool so I decided to recreate them in HTML and animate them using CSS. 
+This is a demo inspired in the Pokemon TCG pocket. I believe the design and effects of the cards in this game are really cool so I decided to recreate them in HTML and animate them using CSS.
 
 In this repo you will find one of the special cards and a builder to build your own basic card.
 
+[Demo](https://jelicich.github.io/cards/)
 
 # Repo info
 
